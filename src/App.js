@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
@@ -11,11 +12,10 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
-    console.log('It was clicked!');
+  switchNameHandler = (newName) => {
     this.setState({
         persons: [
-          {name: "Eduardo", age: 32},
+          {name: newName, age: 32},
           {name: "Yaniel", age: 17},
           {name: "Consuelo", age: 50}
         ]
@@ -25,11 +25,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* Never use () on event calling or it will be called inmediately after rendering */}
-        <button onClick={this.switchNameHandler}>Switch!</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}> My hobbies: Racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        {/* Always use .bind syntax because is more efficient */}
+        <button onClick={this.switchNameHandler.bind(this,"Pedro")}>Switch!</button>
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}/>
+        <Person 
+          click={this.switchNameHandler} 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this,"Eduardito")}> My hobbies: Racing</Person>
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}/>
       </div>
     );
   }
