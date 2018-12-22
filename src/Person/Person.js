@@ -5,7 +5,8 @@ class Person extends Component{
     render () {
         return (
             <div className="person">
-                <p>I'm {this.props.name} and I'm {this.props.age} years old!</p>
+                <h1>{this.props.name}</h1>
+                <p>Age: {this.props.age}</p>
                 <p>{this.props.children}</p>
             </div>
         );
