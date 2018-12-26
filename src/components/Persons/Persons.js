@@ -15,7 +15,17 @@ class Persons extends Component{
       }
 
       componentWillReceiveProps(nextProps){
-        console.log('[Persons.js] Inside componentWillReceiveProps()',nextProps);
+        console.log('[Update Persons.js] Inside componentWillReceiveProps()',nextProps);
+      }
+
+      shouldComponentUpdate(nextProps,nextState){
+        console.log('[Update Persons.js] Inside shouldComponentUpdate()',nextProps,nextState);        
+        return nextProps !== this.props.persons;
+        //It's returning true because the properties have changed, therefore triggering the render method
+      }
+
+      componentDidUpdate(){
+        console.log('[Update Persons.js] Inside componentDidUpdate');
       }
     
     render(){
