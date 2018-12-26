@@ -7,9 +7,9 @@ import myLoader from './myLoader/myLoader';
 class App extends Component {
   state = {
     persons: [
-      { name: "Eduardo", age: 32 },
-      { name: "Yaniel", age: 17 },
-      { name: "Consuelo", age: 50 }
+      { id: 1, name: "Eduardo", age: 32 },
+      { id: 2, name: "Yaniel", age: 17 },
+      { id: 3, name: "Consuelo", age: 50 }
     ],
     SomeOtherState: null,
     ShowPersons: false
@@ -39,7 +39,8 @@ class App extends Component {
             return <Person
                 click={() => this.deletePersonHandler(index)} 
                 name={person.name}
-                age={person.age} />
+                age={person.age}
+                key={person.id} />
           })}
         </div>
       );
