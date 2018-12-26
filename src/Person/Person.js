@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import './Person.css';
+import Radium from 'radium';
 
-export default class Person extends Component{
+class Person extends Component{
     render () {
         return (
             <div className="Person">
@@ -12,3 +13,5 @@ export default class Person extends Component{
         );
     }
 }
+
+export default Radium(Person);

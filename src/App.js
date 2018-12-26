@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
-import MyLoader from './MyLoader/MyLoader';
+//import MyLoader from './MyLoader/MyLoader';
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -45,11 +46,19 @@ class App extends Component {
       color: "white",
       font: "inherit",
       border: "1px solid blue",
-      padding: "8px"
+      padding: "8px",
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
     let persons = null;
     if (this.state.ShowPersons) {
       style.backgroundColor = "red";
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
       persons = (
         <div>
           {this.state.persons.map( (person, index) => {
@@ -58,7 +67,7 @@ class App extends Component {
                 name={person.name}
                 age={person.age}
                 key={person.id}
-                changed={(event) => this.nameChangedHandler(event, person.id)} />
+                changed={(event) => this.nameChangedHandler(event, person.key)} />
           })}
         </div>
       );
@@ -86,4 +95,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
