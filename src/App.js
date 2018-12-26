@@ -41,13 +41,15 @@ class App extends Component {
   };
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px"
     };
     let persons = null;
     if (this.state.ShowPersons) {
+      style.backgroundColor = "red";
       persons = (
         <div>
           {this.state.persons.map( (person, index) => {
@@ -61,12 +63,22 @@ class App extends Component {
         </div>
       );
     }
+    const classes = [];
+    if (this.state.persons.length <= 2){
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1){
+      classes.push('bold');
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        <button onClick={this.togglePersonsHandler} style={style}>
-          Toggle Persons name!
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button 
+        style={style}
+        onClick={this.togglePersonsHandler}>
+          Toggle Persons
         </button>
         {persons}
       </div>
