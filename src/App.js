@@ -7,9 +7,9 @@ import myLoader from './myLoader/myLoader';
 class App extends Component {
   state = {
     persons: [
-      { name: "Edu", age: 32 },
-      { name: "Yani", age: 17 },
-      { name: "Consue", age: 50 }
+      { name: "Eduardo", age: 32 },
+      { name: "Yaniel", age: 17 },
+      { name: "Consuelo", age: 50 }
     ],
     SomeOtherState: null,
     ShowPersons: false
@@ -19,7 +19,8 @@ class App extends Component {
     this.setState({ ShowPersons: !doesShow });
   };
   deletePersonHandler = (personIndex) => {
-     const persons = this.state.persons;
+     //const persons = this.state.persons.slice();
+     const persons = [...this.state.persons];
      persons.splice(personIndex,1);
      this.setState({persons: persons});
   };
