@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person'
 //import MyLoader from './MyLoader/MyLoader';
 
@@ -45,19 +45,10 @@ class App extends Component {
       color: "white",
       font: "inherit",
       border: "1px solid blue",
-      padding: "8px",
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      padding: "8px"
     };
     let persons = null;
     if (this.state.ShowPersons) {
-      style.backgroundColor = "red";
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
       persons = (
         <div>
           {this.state.persons.map( (person, index) => {
@@ -71,18 +62,18 @@ class App extends Component {
         </div>
       );
     }
-    const classes = [];
+    const designedClasses = [];
     if (this.state.persons.length <= 2){
-      classes.push('red');
+      designedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1){
-      classes.push('bold');
+      designedClasses.push(classes.bold);
     }
 
     return (
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
+        <p className={designedClasses.join(' ')}>This is really working!</p>
         <button 
         style={style}
         onClick={this.togglePersonsHandler}>
