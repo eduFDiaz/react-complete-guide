@@ -24,6 +24,21 @@ class App extends Component {
   componentDidMount(){
     console.log('[App.js] Inside componentDidMount()');
   }
+
+  shouldComponentUpdate(nextProps,nextState){
+    console.log('[Update App.js] Inside shouldComponentUpdate()',nextProps,nextState);        
+    return nextProps !== this.props.persons;
+    //It's returning true because the properties have changed, therefore triggering the render method
+  }
+
+  componentWillUpdate(nextProps,nextState){
+    console.log('[Update App.js] Inside shouldComponentUpdate()',nextProps,nextState);
+    //It's returning true because the properties have changed, therefore triggering the render method
+  }
+
+  componentDidUpdate(){
+    console.log('[Update App.js] Inside componentDidUpdate');
+  }
   
 
   nameChangedHandler = (event, id) => {
