@@ -9,7 +9,7 @@ class App extends Component {
     console.log('[App.js] Inside constructor()',props);
     this.state = {
       persons: [
-        { id: "asfa1", name: "Eduardo", age: 32 },
+        { id: "asfa1", name: "Eduardo", age: "32" },
         { id: "vasdf1", name: "Yaniel", age: 17 },
         { id: "asdf11", name: "Consuelo", age: 50 }
       ],
