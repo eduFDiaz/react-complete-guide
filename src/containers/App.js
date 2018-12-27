@@ -27,7 +27,7 @@ class App extends Component {
 
   shouldComponentUpdate(nextProps,nextState){
     console.log('[Update App.js] Inside shouldComponentUpdate()',nextProps,nextState);        
-    //return true;
+    return true;
     //return nextProps.persons !== this.state.persons;
     //It's returning true because the properties have changed, therefore triggering the render method
   }
