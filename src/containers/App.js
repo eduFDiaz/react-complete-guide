@@ -3,6 +3,8 @@ import classes from "./App.css";
 import Cockpit from '../components/Cockpit/Cockpit'
 import Persons from '../components/Persons/Persons'
 
+export const AuthContext = React.createContext(false);
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -15,7 +17,8 @@ class App extends Component {
       ],
       otherState: "some other value",
       showPersons: false,
-      toggleClicked: 0
+      toggleClicked: 0,
+      authenticated: false
     };
   }
   componentWillMount(){
@@ -77,6 +80,9 @@ class App extends Component {
            }
     });
   }
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  }
 
   render() {
     console.log('[App.js] Inside render()');
@@ -98,8 +104,11 @@ class App extends Component {
             showPersons={this.state.showPersons}
             persons={this.state.persons}
             clicked={this.togglePersonsHandler}
-                 />
-        {persons}
+            login={this.loginHandler}
+          />
+          <AuthContext.Provider value={this.state.authenticated}>
+            {persons}
+          </AuthContext.Provider>
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
